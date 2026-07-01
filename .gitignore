@@ -427,3 +427,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Node / Angular (AutoCSS Angular demo)
+node_modules/
+dist/
+.angular/

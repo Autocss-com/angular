@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "title": "Records",
+    "intro": "Sample data served by this framework's own data layer. It uses the same JSON shape the AutoCSS UI consumes ([{ id, title, intro, items: [] }]) so that, in a later stage, the remote AutoCSS UI can render this exact data with no changes to the data source.",
+    "items": [
+      { "id": "1", "name": "Alpha",   "type": "Standard", "status": "Active",   "created": "2026-01-05", "author": "system" },
+      { "id": "2", "name": "Bravo",   "type": "Premium",  "status": "Active",   "created": "2026-01-11", "author": "system" },
+      { "id": "3", "name": "Charlie", "type": "Standard", "status": "Inactive", "created": "2026-02-02", "author": "system" },
+      { "id": "4", "name": "Delta",   "type": "Trial",    "status": "Pending",  "created": "2026-02-18", "author": "system" },
+      { "id": "5", "name": "Echo",    "type": "Premium",  "status": "Active",   "created": "2026-03-09", "author": "system" },
+      { "id": "6", "name": "Foxtrot", "type": "Standard", "status": "Inactive", "created": "2026-03-22", "author": "system" }
+    ]
+  }
+]
