@@ -22,10 +22,12 @@ type Status = 'loading' | 'ready' | 'error';
 const DATA_URL = 'data/records.json';
 
 @Component({
-  selector: 'app-root',
+  // Host element IS the AutoCSS <app-container> (merged the framework root
+  // into the scaffold root instead of nesting inside a separate <app-root>).
+  selector: 'app-container',
   imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  // styleUrl: './app.css', // native styles disabled — demo is styled solely by the remote AutoCSS stylesheets (see src/index.html)
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class App {
