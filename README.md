@@ -65,6 +65,14 @@ On push to `main`, a GitHub Actions workflow builds and publishes
   content-level elements (`h1`, tagline, `h2`, intro, `<table>`) placed **inside
   `<article>`**.
 
+### Native stylesheets commented out
+- The framework's own stylesheets are **disabled** so the remote AutoCSS
+  stylesheets are the sole source of styling: the component `styleUrl: './app.css'`
+  in `src/app/app.ts` is commented out, and the contents of the global
+  `src/styles.css` are commented out. (`src/styles.css` stays referenced from
+  `angular.json`, which is strict JSON and cannot hold comments, so its rules are
+  disabled inside the file instead.) The CSS files are kept for easy re-enable.
+
 ### Angular-specific wiring (the gotchas)
 - **Component root merged into `<app-container>`.** The component `selector` was
   changed from `app-root` to **`app-container`**, and `src/index.html` bootstraps

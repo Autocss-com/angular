@@ -27,7 +27,7 @@ const DATA_URL = 'data/records.json';
   selector: 'app-container',
   imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.css',
+  // styleUrl: './app.css', // native styles disabled — demo is styled solely by the remote AutoCSS stylesheets (see src/index.html)
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class App {
