@@ -1,59 +1,31 @@
-# AutocssAngularDemo
+# AutoCSS demo — Angular data layer
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.31.
+A standard **Angular** instance (standalone component, signals, `HttpClient`)
+that renders its own sample data. It is the Angular back-end reference for the
+[AutoCSS](https://autocss.com) remote-rendering demo: *have UI, bring your own
+data — one UI, many back-ends.*
 
-## Development server
+**Stage 1 (this repo today):** the app fetches `public/data/records.json` — the
+same JSON shape the AutoCSS UI consumes (`[{ id, title, intro, items: [] }]`) —
+and renders it as a table with loading/error states. No AutoCSS attached yet.
 
-To start a local development server, run:
+**Stage 2 (later):** the remote AutoCSS UI is attached to render this same data.
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Develop
 
 ```bash
-ng generate component component-name
+npm install
+npm start        # ng serve
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Build
 
 ```bash
-ng generate --help
+npm run build    # ng build --base-href /angular/ -> dist/autocss-angular-demo/browser
 ```
 
-## Building
+## Deploy
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+On push to `main`, a GitHub Actions workflow builds and publishes
+`dist/autocss-angular-demo/browser` to GitHub Pages:
+<https://autocss-com.github.io/angular/>
