@@ -22,7 +22,9 @@ type Status = 'loading' | 'ready' | 'error';
 const DATA_URL = 'data/records.json';
 
 @Component({
-  selector: 'app-root',
+  // Host element IS the AutoCSS <app-container> (merged the framework root
+  // into the scaffold root instead of nesting inside a separate <app-root>).
+  selector: 'app-container',
   imports: [],
   templateUrl: './app.html',
   styleUrl: './app.css',

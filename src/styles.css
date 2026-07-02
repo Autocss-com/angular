@@ -10,10 +10,3 @@ body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
 }
-
-/* Let the AutoCSS <app-container> Holy-Grail grid be the layout root
-   (Angular mounts the component inside <app-root>, which is inline by
-   default). */
-app-root {
-  display: contents;
-}

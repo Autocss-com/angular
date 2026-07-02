@@ -66,18 +66,22 @@ On push to `main`, a GitHub Actions workflow builds and publishes
   `<article>`**.
 
 ### Angular-specific wiring (the gotchas)
-- **`src/app/app.ts` — `schemas: [CUSTOM_ELEMENTS_SCHEMA]` (required).** Without
-  it Angular's template compiler errors (`'app-container' is not a known element`)
-  on every AutoCSS custom element. Adding the schema lets the `app-*` tags render
-  as native custom elements.
-- **`src/styles.css` — `app-root { display: contents }`.** Angular mounts the
-  component inside `<app-root>` (inline by default); `display: contents` lets
-  `<app-container>` be the Holy-Grail grid root that AutoCSS's `layout.css`
-  styles.
-- **Removed the emulated `:host { display: block }` from `src/app/app.css`.**
-  Angular compiles `:host` to an attribute selector (specificity `0,1,0`) that
-  beats the global `app-root` type selector (`0,0,1`), so leaving it would
-  override the `display: contents` above.
+- **Component root merged into `<app-container>`.** The component `selector` was
+  changed from `app-root` to **`app-container`**, and `src/index.html` bootstraps
+  into `<app-container></app-container>` (no separate `<app-root>`). `app.html`
+  renders the scaffold's **children**, so the component's host element IS
+  `<app-container>` — the Holy-Grail grid root that AutoCSS's `layout.css` styles.
+  No `app-root { display: contents }` shim is needed.
+- **`src/app/app.ts` — `schemas: [CUSTOM_ELEMENTS_SCHEMA]` (required).** The
+  template still contains `app-banner`, `app-logo`, `app-legal`, and
+  `app-version`; without the schema Angular's compiler errors
+  (`'app-banner' is not a known element`). The schema lets those render as native
+  custom elements.
+- **Do not set `:host` display in `src/app/app.css`** (the scaffold's default
+  `:host { display: block }` was removed). Angular compiles `:host` to an
+  attribute selector (specificity `0,1,0`) that beats AutoCSS's
+  `app-container { display: grid }` type rule (`0,0,1`), so any `:host` display
+  would override the Holy-Grail grid.
 - Static `checked` attributes on the "Layouts" checkbox and "System" radio work
   as-is; glyphs (`☼ ☾ ◐ ✖`) are written as HTML entities in the template.
 
