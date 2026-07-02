@@ -1,0 +1,42 @@
+<main>
+  <header>
+    <h1>Angular data layer</h1>
+    <p class="tag">
+      A standard Angular instance rendering its own data &mdash; the back-end
+      reference for the AutoCSS remote-rendering demo.
+    </p>
+  </header>
+
+  @if (status() === 'loading') {
+    <p role="status">Loading data&hellip;</p>
+  }
+
+  @if (status() === 'error') {
+    <p role="alert">Could not load data.</p>
+  }
+
+  @if (status() === 'ready' && record(); as rec) {
+    <article>
+      <h2>{{ rec.title }}</h2>
+      <p class="intro">{{ rec.intro }}</p>
+      <table>
+        <thead>
+          <tr>
+            @for (column of columns(); track column) {
+              <th>{{ column }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of rec.items; track item['id']) {
+            <tr>
+              @for (column of columns(); track column) {
+                <td>{{ item[column] }}</td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </article>
+  }
+</main>
