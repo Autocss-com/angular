@@ -1,42 +1,118 @@
-<main>
+<!-- Default AutoCSS Holy-Grail scaffold (app-container down to <article>).
+     The framework's own content-level elements live inside <article>. -->
+<app-container>
+  <app-banner></app-banner>
   <header>
-    <h1>Angular data layer</h1>
-    <p class="tag">
-      A standard Angular instance rendering its own data &mdash; the back-end
-      reference for the AutoCSS remote-rendering demo.
-    </p>
+    <app-logo></app-logo>
+    <label>
+      Layouts
+      <input type="checkbox" checked />
+    </label>
+    <label aria-label="Light color scheme">
+      &#9788; Light
+      <input type="radio" aria-hidden="true" name="color-scheme" value="light" />
+    </label>
+    <label aria-label="Dark color scheme">
+      &#9790; Dark
+      <input type="radio" aria-hidden="true" name="color-scheme" value="dark" />
+    </label>
+    <label aria-label="System color scheme">
+      &#9680; System
+      <input type="radio" aria-hidden="true" name="color-scheme" value="system" checked />
+    </label>
   </header>
-
-  @if (status() === 'loading') {
-    <p role="status">Loading data&hellip;</p>
-  }
-
-  @if (status() === 'error') {
-    <p role="alert">Could not load data.</p>
-  }
-
-  @if (status() === 'ready' && record(); as rec) {
+  <nav>
+    <details open>
+      <summary></summary>
+      <section>
+        <label><input type="radio" aria-hidden="true" name="nav" value="manage" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="faqs" /></label>
+      </section>
+    </details>
+    <details open>
+      <summary></summary>
+      <section>
+        <label><input type="radio" aria-hidden="true" name="nav" value="api-registration" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="audit" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="option-set" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="option-types" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="scope-type" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="server-types" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="servers" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="credentials" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="variables" /></label>
+        <label><input type="radio" aria-hidden="true" name="nav" value="settings" /></label>
+      </section>
+    </details>
+  </nav>
+  <main>
     <article>
-      <h2>{{ rec.title }}</h2>
-      <p class="intro">{{ rec.intro }}</p>
-      <table>
-        <thead>
-          <tr>
-            @for (column of columns(); track column) {
-              <th>{{ column }}</th>
-            }
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of rec.items; track item['id']) {
+      <h1>Angular data layer</h1>
+      <p class="tag">
+        A standard Angular instance rendering its own data inside the remote
+        AutoCSS scaffold.
+      </p>
+
+      @if (status() === 'loading') {
+        <p role="status">Loading data&hellip;</p>
+      }
+
+      @if (status() === 'error') {
+        <p role="alert">Could not load data.</p>
+      }
+
+      @if (status() === 'ready' && record(); as rec) {
+        <h2>{{ rec.title }}</h2>
+        <p class="intro">{{ rec.intro }}</p>
+        <table>
+          <thead>
             <tr>
               @for (column of columns(); track column) {
-                <td>{{ item[column] }}</td>
+                <th>{{ column }}</th>
               }
             </tr>
-          }
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            @for (item of rec.items; track item['id']) {
+              <tr>
+                @for (column of columns(); track column) {
+                  <td>{{ item[column] }}</td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
     </article>
-  }
-</main>
+  </main>
+  <aside>
+    <h2 aria-live="polite">DETAILS</h2>
+    <label role="button" aria-label="Close">
+      <input type="checkbox" />
+      &#10006;
+    </label>
+    <form>
+      <fieldset></fieldset>
+      <p aria-live="polite"></p>
+      <small>Note: Ensure all fields are filled correctly before submitting.</small>
+      <small>Note: All fields marked with * are required.</small>
+      <label role="button" aria-label="Delete">
+        Delete
+        <input type="checkbox" />
+      </label>
+      <label role="button" aria-label="Reset">
+        Reset
+        <input type="checkbox" />
+      </label>
+      <label role="button" aria-label="Save">
+        Save
+        <input type="checkbox" />
+      </label>
+    </form>
+  </aside>
+  <footer>
+    <app-legal></app-legal>
+    <app-version></app-version>
+  </footer>
+  <app-banner></app-banner>
+</app-container>

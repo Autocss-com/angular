@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, computed, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 interface Item {
@@ -26,6 +26,7 @@ const DATA_URL = 'data/records.json';
   imports: [],
   templateUrl: './app.html',
   styleUrl: './app.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class App {
   protected readonly status = signal<Status>('loading');
