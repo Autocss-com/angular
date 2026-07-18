@@ -67,7 +67,7 @@ phase. Its role is the **data / business layer** — it fetches and prepares dat
 the AutoCSS UI. It is **not** the zero-dependency presentation layer, so the
 framework + npm/build tooling are the **sanctioned exception** here.
 
-- **Canonical D7460N Architecture** (zero-dependency, CSS-replaces-JS, HTML+CSS
+- **Canonical AutoCSS Architecture** (zero-dependency, CSS-replaces-JS, HTML+CSS
   presentation rules) lives in **autocss-com/autocss** `CLAUDE.md`; it governs the
   AutoCSS UI this repo feeds.
 - The Charter above governs ALL work in this repo. Its **presentation-layer** rules
