@@ -1,0 +1,19 @@
+{
+  "schema": "d7460n-progress/1",
+  "read_order": ["PROGRESS.json", "newest shard in shards[]"],
+  "meta": {
+    "repo": "autocss-com/angular",
+    "what": "Framework reference demo for the AutoCSS remote-rendering phase: a standard/idiomatic Angular app that renders its OWN data inside the remotely-loaded AutoCSS UI (https://autocss.com). NOT tied to a product yet; a real product + its own CLAUDE.md come later.",
+    "rules": [
+      "README stays MINIMAL — only what a developer changes from the default scaffold. Developers move fast; a long changelog reads as 'lots of work' when it isn't. Full change history lives HERE, mirroring the autocss repo's memory system.",
+      "AutoCSS is loaded REMOTELY from https://autocss.com — do not vendor/copy it.",
+      "Framework build tooling (npm/Angular CLI) is fine here — AutoCSS's zero-dependency rule applies to AutoCSS itself, not to this back-end."
+    ],
+    "cross_repo_master": "The authoritative cross-repo accounting lives in autocss-com/autocss (PROGRESS.json + progress/log-001.ndjson). This file is the angular-specific mirror."
+  },
+  "shards": ["progress/log-001.ndjson"],
+  "cursor": {
+    "phase": "Stage 2 (styles) DONE: renders its own data inside the AutoCSS scaffold, styled solely by remote autocss.com CSS. Live at https://autocss-com.github.io/angular/.",
+    "next": "Wire the remote AutoCSS JS runtime (app.js/oninput) so AutoCSS RENDERS the data (not the framework). Later: assign a real product + add a per-repo CLAUDE.md."
+  }
+}
